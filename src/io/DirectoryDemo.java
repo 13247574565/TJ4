@@ -8,9 +8,9 @@ import static net.mindview.util.Print.*;
 public class DirectoryDemo {
   public static void main(String[] args) {
     // All directories:
-    PPrint.pprint(Directory.walk(".").dirs);
+    PPrint.pprint(Directory.walk("F:\\TIJ4\\src\\io").dirs);
     // All files beginning with 'T'
-    for(File file : Directory.local(".", "T.*"))
+    for(File file : Directory.local(".", "D.*"))
       print(file);
     print("----------------------");
     // All Java files beginning with 'T':
