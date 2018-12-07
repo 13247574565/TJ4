@@ -43,9 +43,10 @@ public class ZipCompress {
 		while ((ze = in2.getNextEntry()) != null) {
 			print("Reading file " + ze);
 			int x;
-			while ((x = bis.read()) != -1)
+			while ((x = bis.read()) != -1){
 				System.out.write(x);
-				System.out.println();
+			}
+				
 		}
 		if (arr.length == 1)
 			print("Checksum: " + csumi.getChecksum().getValue());
@@ -56,6 +57,7 @@ public class ZipCompress {
 		while (e.hasMoreElements()) {
 			ZipEntry ze2 = (ZipEntry) e.nextElement();
 			print("File: " + ze2);
+
 			// ... and extract the data as before
 		}
 		/* if(arr.length == 1) */

@@ -37,10 +37,13 @@ public class GZIPcompress {
 		
 		
 		
-		BufferedReader in = new BufferedReader(new FileReader("./test/aaa.txt"));
-		ZipOutputStream zos = new ZipOutputStream(new FileOutputStream("./test/test.zip"));
+		FileOutputStream fos = new FileOutputStream("./test/test.zip");
+		CheckedOutputStream csum = new CheckedOutputStream(fos, new Adler32());
+		ZipOutputStream zos = new ZipOutputStream(csum);
 		zos.putNextEntry(new ZipEntry("./test/aaa.txt"));
 		BufferedOutputStream out = new BufferedOutputStream(zos);
+		BufferedReader in = new BufferedReader(new FileReader("./test/aaa.txt"));
+
 		System.out.println("Writing file");
 		int c;
 		while ((c = in.read()) != -1)
@@ -56,10 +59,11 @@ public class GZIPcompress {
 		while ((ze = ziStream.getNextEntry()) != null) {
 			print("Reading file " + ze);
 			int x;
-			while ((x = bis.read()) != -1)
+			while ((x = bis.read()) != -1){
 				System.out.write(x);
+			}
 		}
-		
+
 		
 		
 		
